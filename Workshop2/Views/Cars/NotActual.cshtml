@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Workshop2.Models.Car>
+
+@{
+    ViewData["Title"] = "NotActual";
+}
+
+<h1>Lista wszystkich pojazdów</h1>
+
+<p>
+    <a asp-action="Create">Nowy pojazd</a> | 
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarVIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActual)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarVIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActual)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarId">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.CarId">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarId">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Powrót</a>
+</div>

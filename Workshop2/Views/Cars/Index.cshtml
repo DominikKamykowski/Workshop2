@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Workshop2.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista samochodów</h1>
+
+<p>
+    <a asp-action="Create">Utwórz nowy</a> |
+    <a asp-action="NotActual">Wszystkie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarVIN)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarVIN)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarId">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.CarId">Szczegóły</a> |
+                <a asp-action="NotActual" asp-route-id="@item.CarId">Nie aktualne</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

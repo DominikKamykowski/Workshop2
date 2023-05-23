@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Workshop2.Models.WorkTask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista zadań</h1>
+
+<p>
+    <a asp-action="Create">Utwórz nowe</a>  |  
+    <a asp-action="AllList">Wszystkie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStartDate)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Completed" asp-route-id="@item.TaskId">Gotowe</a> |
+                <a asp-action="Edit" asp-route-id="@item.TaskId">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.TaskId">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.TaskId">Usuń</a>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

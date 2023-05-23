@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Workshop2.Models.WorkTask>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Historia</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCompleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCompleted)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TaskId">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.TaskId">Szczegóły</a>
+                @*<a asp-action="Delete" asp-route-id="@item.TaskId">Usuń</a>*@
+            </td>
+        </tr>
+            
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Powrót</a>
+</div>
